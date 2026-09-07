@@ -3,7 +3,7 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
     [SerializeField] private float baseSpeed = 10f;
-    private Vector2 dir;
+    private Vector2 dir = Vector2.down;
     private void Update()
     {
         transform.Translate(dir * baseSpeed * Time.deltaTime, Space.World);
