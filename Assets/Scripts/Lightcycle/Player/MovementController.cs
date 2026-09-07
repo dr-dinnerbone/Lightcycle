@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    [SerializeField] private const float baseSpeed = 10f;
+    [SerializeField] private float baseSpeed = 10f;
     private Vector2 dir;
     private void Update()
     {
