@@ -34,4 +34,26 @@ public class CollisionHandler : MonoBehaviour
             Debug.Log("asdf");
         }
     }
+    private void OnDrawGizmos()
+    {
+        if (movementController is null) return;
+
+        Vector2 dir = Vector2.zero;
+        switch (movementController.dir)
+        {
+            case Direction.Up: dir = Vector2.up; break;
+            case Direction.Down: dir = Vector2.down; break;
+            case Direction.Left: dir = Vector2.left; break;
+            case Direction.Right: dir = Vector2.right; break;
+        }
+
+        Vector3 origin = transform.position + ((Vector3)dir * offset);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(origin, (Vector3)dir * range);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(origin, 0.05f);
+    }
+
 }
