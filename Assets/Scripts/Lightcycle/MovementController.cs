@@ -3,6 +3,7 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
     [SerializeField] private float baseSpeed = 10f;
+    [SerializeField] private TrailRenderer trail;
     private Vector2 dirVector;
     private Direction _dir;
     public Direction dir
@@ -29,8 +30,14 @@ public class MovementController : MonoBehaviour
                     transform.eulerAngles = new Vector3(0, 0, 0);
                     break;
             }
+            trail.AddPosition(transform.position);
             _dir = value;
         }
+    }
+    private void Start()
+    {
+        if (trail is null)
+            trail = GetComponent<TrailRenderer>();
     }
     private void Update()
     {
