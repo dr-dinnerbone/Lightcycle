@@ -15,7 +15,6 @@ public class TrailController : MonoBehaviour
             GameObject holder = new GameObject("Trails");
             trailHolder = holder.transform;
         }
-
         lastDir = movementController.dir;
         StartNewTrailSegment();
     }
@@ -23,9 +22,11 @@ public class TrailController : MonoBehaviour
     {
 
         if (movementController.dir != lastDir)
+        {
             StartNewTrailSegment();
+        }
 
-        if (currentCollider is null) return;
+        if (currentCollider is null) Debug.Log("BIG BOOMER");
 
         float distance = Vector3.Distance(currentColliderOrigin, transform.position);
         currentCollider.size = new Vector2(distance, trailWidth);
@@ -54,10 +55,10 @@ public class TrailController : MonoBehaviour
                 dir = 0f;
                 break;
             case Direction.Right:
-                dir = 90f;
+                dir = 180f;
                 break;
             default:
-                dir = 90f;
+                dir = 180f;
                 break;
         }
         segment.transform.rotation = Quaternion.Euler(0, 0, dir);
